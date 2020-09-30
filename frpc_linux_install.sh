@@ -10,13 +10,10 @@ wget -P ${WORK_PATH} https://github.com/fatedier/frp/releases/download/v${FRP_VE
 tar -zxvf frp_${FRP_VERSION}_linux_amd64.tar.gz && \
 cd frp_${FRP_VERSION}_linux_amd64 && \
 mv frpc /usr/local/frp && \
-# 下载frpc.in和frpc.service
-wget -P /usr/local/frp https://raw.githubusercontent.com/${REPO}/master/frpc.ini && \
+# 下载frpc.service
 wget -P /lib/systemd/system https://raw.githubusercontent.com/${REPO}/master/frpc.service && \
 systemctl daemon-reload && \
-# 启动frpc
-sudo systemctl start frpc && \
-sudo systemctl enable frpc && \
+
 # 删除多余文件
 cd ${WORK_PATH} && \
 rm -rf frp_${FRP_VERSION}_linux_amd64 frp_${FRP_VERSION}_linux_amd64.tar.gz frpc_linux_install.sh
